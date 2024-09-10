@@ -7,9 +7,18 @@ function validateForm() {
   const errorMessages = document.getElementById('errorMessages');
   errorMessages.innerHTML = '';
 
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
   if (!name || !email || !password) {
     let errorMessage = '<div class="alert alert-danger" role="alert">';
     errorMessage += 'Kérjük, töltsd ki az összes mezőt!';
+    errorMessage += '</div>';
+    errorMessages.innerHTML = errorMessage;
+  } else if (!emailPattern.test(email)) {
+    let errorMessage = '<div class="alert alert-danger" role="alert">';
+    errorMessage += 'Kérjük, érvényes email címet adj meg!';
     errorMessage += '</div>';
     errorMessages.innerHTML = errorMessage;
   } else {
